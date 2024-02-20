@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Method Not Allowed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="">
+    <!-- font awesome icons -->
+    <link href="/assets/css/font-awesome.css" rel="stylesheet">
+    <!-- bootstrap css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- main css -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <link rel="icon" type="image/png" href="/uploads/favicon.png" />
+    <!--SET DYNAMIC VARIABLE IN STYLE-->
+    <style>
+        :root {
+          --main-color: #161a1d;
+          --color1: #00af91;
+        }
+      </style>
+    </head>
+
+<body class="error_page">
+    <div class="full-screen-size-fixed-container d-flex justify-content-center align-items-center">
+        <div class="p-3 text-center">
+            <h1 class="display-1 font-weight-bold ">405</h1>
+            <h4 class="text-muted">Method Not Allowed</h4>
+            <p class="mb-4">Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused.</p>
+            <a class="btn-2" href="/" role="button"><i
+                    class="fas fa-house-user mr-2"></i>Back to Home</a>
+        </div>
+        
+    </div>
+
+<div class="js-cookie-consent cookie-consent">
+
+    <span class="cookie-consent__message">
+        Your experience on this site will be improved by allowing cookies.
+    </span>
+
+    <button class="js-cookie-consent-agree cookie-consent__agree">
+        Allow cookies
+    </button>
+
+</div>
+
+<!--SET DYNAMIC VARIABLE IN SCRIPT-->
+<script>
+    "use strict";
+    window.laravelCookieConsent = (function () {
+
+            const COOKIE_VALUE = 1;
+            const COOKIE_DOMAIN = 'demo.lobage.com';
+
+            function consentWithCookies() {
+                setCookie('laravel_cookie_consent', COOKIE_VALUE, 7300);
+                hideCookieDialog();
+            }
+
+            function cookieExists(name) {
+                return (document.cookie.split('; ').indexOf(name + '=' + COOKIE_VALUE) !== -1);
+            }
+
+            function hideCookieDialog() {
+                const dialogs = document.getElementsByClassName('js-cookie-consent');
+
+                for (let i = 0; i < dialogs.length; ++i) {
+                    dialogs[i].style.display = 'none';
+                }
+            }
+
+            function setCookie(name, value, expirationInDays) {
+                const date = new Date();
+                date.setTime(date.getTime() + (expirationInDays * 24 * 60 * 60 * 1000));
+                document.cookie = name + '=' + value
+                    + ';expires=' + date.toUTCString()
+                    + ';domain=' + COOKIE_DOMAIN
+                    + ';path=/'
+                    + ';samesite=lax';
+            }
+
+            if (cookieExists('laravel_cookie_consent')) {
+                hideCookieDialog();
+            }
+
+            const buttons = document.getElementsByClassName('js-cookie-consent-agree');
+
+            for (let i = 0; i < buttons.length; ++i) {
+                buttons[i].addEventListener('click', consentWithCookies);
+            }
+
+            return {
+                consentWithCookies: consentWithCookies,
+                hideCookieDialog: hideCookieDialog
+            };
+        })();
+</script>
+
+</body>
+</html>
